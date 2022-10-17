@@ -4,5 +4,4 @@
     <string name="button_addUser">add user</string>
     <string name="textview_users">no users added</string>
     <string name="editText_userName_hint">Name</string>
-    <string name="editText_userName_text">Name</string>
 </resources>

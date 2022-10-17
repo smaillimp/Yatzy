@@ -23,8 +23,7 @@
             android:hint="@string/editText_userName_hint"
             android:importantForAutofill="no"
             android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:text="@string/editText_userName_text" />
+            android:minHeight="48dp" />
 
         <Button
             android:id="@+id/button_addUser"

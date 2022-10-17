@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.core.widget.doAfterTextChanged
+import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.smaillimp.yatzy.R
@@ -26,8 +28,13 @@ class UsersActivity : AppCompatActivity() {
 
         val textView_users : TextView = findViewById(R.id.textView_users)
         val button_addUser : Button = findViewById(R.id.button_addUser)
-        val InputField_userName : EditText = findViewById(R.id.editText_userName)
+        val editText_userName : EditText = findViewById(R.id.editText_userName)
 
+        val state = viewModel.state
+
+        editText_userName.doAfterTextChanged {
+            viewModel.onEvent(AddUserFormEvent.UserNameChanged(editText_userName.text.toString()))
+        }
 
         viewModel.getUser().observe(this, Observer { users ->
             val stringBuilder = StringBuilder()
@@ -38,9 +45,7 @@ class UsersActivity : AppCompatActivity() {
         })
 
         button_addUser.setOnClickListener {
-            val user = User(InputField_userName.text.toString())
-            viewModel.addUser(user)
-            InputField_userName.setText("")
+            viewModel.onEvent(AddUserFormEvent.Submit)
         }
     }
 }

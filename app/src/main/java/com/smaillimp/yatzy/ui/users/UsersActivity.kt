@@ -24,9 +24,9 @@ class UsersActivity : AppCompatActivity() {
         val viewModel = ViewModelProvider(this, factory)
             .get(UsersViewModel::class.java)
 
-        val textView_users = findViewById(R.id.textView_users) as TextView
-        val button_addUser = findViewById(R.id.button_addUser) as Button
-        val InputField_userName = findViewById(R.id.InputField_userName) as EditText
+        val textView_users : TextView = findViewById(R.id.textView_users)
+        val button_addUser : Button = findViewById(R.id.button_addUser)
+        val InputField_userName : EditText = findViewById(R.id.editText_userName)
 
 
         viewModel.getUser().observe(this, Observer { users ->

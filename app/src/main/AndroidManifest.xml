@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".YatzyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,11 +14,10 @@
         android:theme="@style/Theme.Yatzy"
         tools:targetApi="31">
         <activity
-            android:name=".ui.users.UsersActivity"
+            android:name=".presentation.players.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Yatzy.NoActionBar">
-
+            android:theme="@style/Theme.Yatzy">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -11,7 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.smaillimp.yatzy.feature.players.model.Player
-import com.smaillimp.yatzy.presentation.PlayerFormViewModel
 
 @Composable
 fun PlayerFormView(

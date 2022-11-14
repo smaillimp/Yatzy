@@ -8,6 +8,7 @@ import com.smaillimp.yatzy.feature.players.domain.repository.PlayerRepositoryInt
 import com.smaillimp.yatzy.feature.players.usecase.AddPlayer
 import com.smaillimp.yatzy.feature.players.usecase.GetPlayers
 import com.smaillimp.yatzy.feature.players.usecase.PlayerUseCases
+import com.smaillimp.yatzy.feature.players.usecase.ValidatePlayerName
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,7 +39,8 @@ object AppModule {
     fun provideUserUseCases(repository: PlayerRepositoryInterface): PlayerUseCases {
         return PlayerUseCases(
             getPlayers = GetPlayers(repository),
-            addPlayer = AddPlayer(repository)
+            addPlayer = AddPlayer(repository),
+            validatePlayerName = ValidatePlayerName()
         )
     }
 }

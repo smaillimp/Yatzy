@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Yatzy</string>
-    <string name="action_settings">Settings</string>
-    <string name="button_addUser">add user</string>
-    <string name="textview_users">no users added</string>
-    <string name="editText_userName_hint">Name</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

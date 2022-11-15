@@ -30,7 +30,7 @@ internal class PlayerFormViewModelTest {
                 validatePlayerName = ValidatePlayerName()
             )
         )
-        playerFormViewModel.onEvent(PlayerFormEvent.AddPlayer(Player(name = "Andy")))
+        playerFormViewModel.onEvent(PlayerFormEvent.Submit(Player(name = "Andy")))
         advanceUntilIdle()
         assertTrue("use case AddPlayer must be called after event AddPlayer", addPlayerMock.called)
     }

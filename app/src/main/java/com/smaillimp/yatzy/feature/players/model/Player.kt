@@ -1,4 +1,4 @@
-package com.smaillimp.yatzy.feature_player.model
+package com.smaillimp.yatzy.feature.players.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

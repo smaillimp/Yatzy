@@ -2,17 +2,20 @@ package com.smaillimp.yatzy.presentation.players.form
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.*
+import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.smaillimp.yatzy.feature_player.model.Player
+import com.smaillimp.yatzy.feature.players.model.Player
 import com.smaillimp.yatzy.presentation.PlayerFormViewModel
 
 @Composable
-fun PlayerFormView (
-    modifier: Modifier= Modifier,
+fun PlayerFormView(
+    modifier: Modifier = Modifier,
 ) {
     val viewModel = hiltViewModel<PlayerFormViewModel>()
     InputWithError(viewModel)
@@ -48,7 +51,7 @@ fun InputWithError(viewModel: PlayerFormViewModel) {
 fun AddUserNamebutton(viewModel: PlayerFormViewModel) {
     val state = viewModel.state.value
     Button(onClick = {
-        viewModel.onEvent(PlayerFormEvent.AddPlayer(player= Player(state.playerName)))
+        viewModel.onEvent(PlayerFormEvent.AddPlayer(player = Player(state.playerName)))
     }) {
         Text("Add user name")
     }

@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Yatzy"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.players.MainActivity"
+            android:name=".presentation.players.PlayerActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Yatzy">

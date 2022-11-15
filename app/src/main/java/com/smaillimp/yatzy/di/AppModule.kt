@@ -2,12 +2,12 @@ package com.smaillimp.yatzy.di
 
 import android.app.Application
 import androidx.room.Room
-import com.smaillimp.yatzy.feature_player.data.data_source.PlayerDatabase
-import com.smaillimp.yatzy.feature_player.data.repository.PlayerRepository
-import com.smaillimp.yatzy.feature_player.domain.repository.IPlayerRepository
-import com.smaillimp.yatzy.feature_player.use_case.AddPlayer
-import com.smaillimp.yatzy.feature_player.use_case.GetPlayers
-import com.smaillimp.yatzy.feature_player.use_case.PlayerUseCases
+import com.smaillimp.yatzy.feature.players.data.data_source.PlayerDatabase
+import com.smaillimp.yatzy.feature.players.data.repository.PlayerRepository
+import com.smaillimp.yatzy.feature.players.domain.repository.PlayerRepositoryInterface
+import com.smaillimp.yatzy.feature.players.usecase.AddPlayer
+import com.smaillimp.yatzy.feature.players.usecase.GetPlayers
+import com.smaillimp.yatzy.feature.players.usecase.PlayerUseCases
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,7 +19,7 @@ import javax.inject.Singleton
 object AppModule {
     @Provides
     @Singleton
-    fun provideUserDatabase(app: Application): PlayerDatabase {
+    fun providePlayerDatabase(app: Application): PlayerDatabase {
         return Room.databaseBuilder(
             app,
             PlayerDatabase::class.java,
@@ -29,13 +29,13 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideUserRepository(db: PlayerDatabase): IPlayerRepository {
+    fun providePlayerRepository(db: PlayerDatabase): PlayerRepositoryInterface {
         return PlayerRepository(db.playerDao)
     }
 
     @Provides
     @Singleton
-    fun provideUserUseCases(repository: IPlayerRepository): PlayerUseCases {
+    fun provideUserUseCases(repository: PlayerRepositoryInterface): PlayerUseCases {
         return PlayerUseCases(
             getPlayers = GetPlayers(repository),
             addPlayer = AddPlayer(repository)

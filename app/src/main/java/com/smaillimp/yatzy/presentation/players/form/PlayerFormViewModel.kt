@@ -4,7 +4,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.smaillimp.yatzy.feature_player.use_case.PlayerUseCases
+import com.smaillimp.yatzy.feature.players.usecase.PlayerUseCases
 import com.smaillimp.yatzy.presentation.players.form.PlayerFormEvent
 import com.smaillimp.yatzy.presentation.players.form.PlayerFormState
 import dagger.hilt.android.lifecycle.HiltViewModel

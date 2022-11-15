@@ -4,7 +4,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.smaillimp.yatzy.feature_player.use_case.PlayerUseCases
+import com.smaillimp.yatzy.feature.players.usecase.PlayerUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
@@ -27,7 +27,8 @@ class PlayersListViewModel @Inject constructor(
     private fun getUsers() {
         getUsersJob?.cancel()
         getUsersJob = playerUseCases.getPlayers().onEach {
-                users -> _state.value = state.value.copy(players=users)
+            users ->
+            _state.value = state.value.copy(players = users)
         }.launchIn(viewModelScope)
     }
 }

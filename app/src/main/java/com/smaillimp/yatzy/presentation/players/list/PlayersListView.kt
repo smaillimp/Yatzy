@@ -13,9 +13,10 @@ fun PlayersListView() {
 
     LazyColumn() {
         items(state.players) {
-                player -> Text(
-            text = player.name
-        )
+            player ->
+            Text(
+                text = player.name
+            )
         }
     }
 }

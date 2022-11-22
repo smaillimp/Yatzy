@@ -6,7 +6,8 @@ import com.smaillimp.yatzy.feature.players.model.Player
 
 @Database(
     entities = [Player::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class PlayerDatabase : RoomDatabase() {
     abstract val playerDao: PlayerDao

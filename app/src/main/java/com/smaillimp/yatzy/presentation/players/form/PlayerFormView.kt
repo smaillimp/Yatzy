@@ -13,9 +13,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.smaillimp.yatzy.feature.players.model.Player
 
 @Composable
-fun PlayerFormView(
-    modifier: Modifier = Modifier,
-) {
+fun PlayerFormView() {
     val viewModel = hiltViewModel<PlayerFormViewModel>()
     InputWithError(viewModel = viewModel)
     AddPlayerButton(viewModel = viewModel)

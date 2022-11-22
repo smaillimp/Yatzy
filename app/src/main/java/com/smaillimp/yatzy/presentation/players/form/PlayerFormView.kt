@@ -11,15 +11,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.smaillimp.yatzy.feature.players.model.Player
-import com.smaillimp.yatzy.presentation.PlayerFormViewModel
 
 @Composable
 fun PlayerFormView(
     modifier: Modifier = Modifier,
 ) {
     val viewModel = hiltViewModel<PlayerFormViewModel>()
-    InputWithError(viewModel)
-    AddUserNamebutton(viewModel)
+    InputWithError(viewModel = viewModel)
+    AddPlayerButton(viewModel = viewModel)
+    MockClearFormButton(viewModel = viewModel)
 }
 
 @Composable
@@ -48,11 +48,22 @@ fun InputWithError(viewModel: PlayerFormViewModel) {
 }
 
 @Composable
-fun AddUserNamebutton(viewModel: PlayerFormViewModel) {
+fun AddPlayerButton(viewModel: PlayerFormViewModel) {
     val state = viewModel.state.value
     Button(onClick = {
-        viewModel.onEvent(PlayerFormEvent.AddPlayer(player = Player(state.playerName)))
+        viewModel.onEvent(
+            PlayerFormEvent.Submit(player = Player(state.playerName))
+        )
     }) {
-        Text("Add user name")
+        Text("Add Player")
+    }
+}
+
+@Composable
+fun MockClearFormButton(viewModel: PlayerFormViewModel) {
+    Button(onClick = {
+        viewModel.onEvent(PlayerFormEvent.clearPlayerName)
+    }) {
+        Text("Clear Form")
     }
 }

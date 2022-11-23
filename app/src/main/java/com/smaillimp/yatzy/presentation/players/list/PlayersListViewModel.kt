@@ -6,14 +6,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.smaillimp.yatzy.feature.players.usecase.PlayerUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class PlayersListViewModel @Inject constructor(
     private val playerUseCases: PlayerUseCases,
+    private val defaultDispatcher: CoroutineDispatcher
 ) : ViewModel() {
     private val _state = mutableStateOf(PlayersListState())
     val state: State<PlayersListState> = _state
@@ -26,9 +28,10 @@ class PlayersListViewModel @Inject constructor(
 
     private fun getUsers() {
         getUsersJob?.cancel()
-        getUsersJob = playerUseCases.getPlayers().onEach {
-            users ->
-            _state.value = state.value.copy(players = users)
-        }.launchIn(viewModelScope)
+        getUsersJob = viewModelScope.launch(defaultDispatcher) {
+            playerUseCases.getPlayers().onEach { users ->
+                _state.value = state.value.copy(players = users)
+            }
+        }
     }
 }

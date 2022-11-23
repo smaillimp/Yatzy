@@ -1,6 +1,5 @@
-package com.smaillimp.yatzy.presentation.players.form
+package com.smaillimp.yatzy.presentation.players.list
 
-import com.smaillimp.yatzy.feature.players.model.Player
 import com.smaillimp.yatzy.feature.players.usecase.AddPlayerMock
 import com.smaillimp.yatzy.feature.players.usecase.GetPlayersMock
 import com.smaillimp.yatzy.feature.players.usecase.PlayerUseCases
@@ -15,18 +14,17 @@ import org.junit.jupiter.api.Test
 internal class PlayerFormViewModelTest {
 
     @Test
-    fun `event AddPlayer triggers AddPlayer use case`() = runTest {
+    fun `list view model gets players on init`() = runTest {
         val testDispatcher = UnconfinedTestDispatcher(testScheduler)
-        val addPlayerMock = AddPlayerMock()
-        val playerFormViewModel = PlayerFormViewModel(
+        val getPlayerMock = GetPlayersMock()
+        PlayersListViewModel(
             PlayerUseCases(
-                getPlayers = GetPlayersMock(),
-                addPlayer = addPlayerMock,
+                getPlayers = getPlayerMock,
+                addPlayer = AddPlayerMock(),
                 validatePlayerName = ValidatePlayerName()
             ),
             defaultDispatcher = testDispatcher
         )
-        playerFormViewModel.onEvent(PlayerFormEvent.Submit(Player(name = "Andy")))
-        assertTrue(addPlayerMock.called, "use case AddPlayer must be called after event AddPlayer")
+        assertTrue(getPlayerMock.called, "GetPlayer use case must be called on init")
     }
 }

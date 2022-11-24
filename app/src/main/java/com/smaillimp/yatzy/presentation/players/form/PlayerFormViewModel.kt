@@ -7,12 +7,14 @@ import androidx.lifecycle.viewModelScope
 import com.smaillimp.yatzy.feature.players.usecase.PlayerUseCases
 import com.smaillimp.yatzy.feature.players.usecase.ValidationResult
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class PlayerFormViewModel @Inject constructor(
     private val playerUseCases: PlayerUseCases,
+    private val defaultDispatcher: CoroutineDispatcher
 ) : ViewModel() {
     private val _state = mutableStateOf(PlayerFormState())
     var state: State<PlayerFormState> = _state
@@ -47,7 +49,7 @@ class PlayerFormViewModel @Inject constructor(
     }
 
     private fun addPlayer(event: PlayerFormEvent.Submit) {
-        viewModelScope.launch {
+        viewModelScope.launch(defaultDispatcher) {
             playerUseCases.addPlayer(event.player)
         }
         clearPlayerName()

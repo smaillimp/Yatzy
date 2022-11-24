@@ -58,6 +58,7 @@ dependencies {
     implementation("androidx.room:room-ktx:${rootProject.extra["roomVersion"]}")
 
     testImplementation("org.junit.jupiter:junit-jupiter:${rootProject.extra["junitJupiterVersion"]}")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${rootProject.extra["kotlinxCoroutinesTestVersion"]}")
 
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:${rootProject.extra["composeVersion"]}")
     debugImplementation("androidx.compose.ui:ui-tooling:${rootProject.extra["composeVersion"]}")

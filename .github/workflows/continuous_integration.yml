@@ -14,6 +14,7 @@ jobs:
           java-version: 11
           distribution: zulu
       - name: Cache Gradle Packages
+        if: ${{ github }}
         uses: actions/cache@v3
         with:
           path: ~/.gradle/caches
@@ -23,3 +24,8 @@ jobs:
         run: ./gradlew ktlintcheck
       - name: Run Unit Tests
         run: ./gradlew testDebugUnitTest
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: ${{ github }} && always()
+        with:
+          junit_files: "app/build/test-results/**/*.xml"

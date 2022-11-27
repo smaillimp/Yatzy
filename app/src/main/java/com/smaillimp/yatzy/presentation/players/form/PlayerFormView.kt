@@ -30,9 +30,7 @@ fun PlayerFormView() {
     val viewModel = hiltViewModel<PlayerFormViewModel>()
     val focusManager = LocalFocusManager.current
     Row(
-        modifier = Modifier
-            .fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween
+        modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween
     ) {
         InputWithError(viewModel = viewModel, focusManager = focusManager)
         AddPlayerButton(viewModel = viewModel)
@@ -55,8 +53,7 @@ fun InputWithError(viewModel: PlayerFormViewModel, focusManager: FocusManager) {
                         viewModel.onEvent(PlayerFormEvent.clearPlayerName)
                     }) {
                         Icon(
-                            imageVector = Icons.Filled.Clear,
-                            contentDescription = "Clear"
+                            imageVector = Icons.Filled.Clear, contentDescription = "Clear"
                         )
                     }
                 }
@@ -69,15 +66,11 @@ fun InputWithError(viewModel: PlayerFormViewModel, focusManager: FocusManager) {
                 Text(text = "Player Name")
             },
             keyboardOptions = KeyboardOptions(
-                autoCorrect = false,
-                keyboardType = KeyboardType.Ascii,
-                imeAction = ImeAction.Done
+                autoCorrect = false, keyboardType = KeyboardType.Ascii, imeAction = ImeAction.Done
             ),
-            keyboardActions = KeyboardActions(
-                onDone = {
-                    focusManager.clearFocus()
-                }
-            ),
+            keyboardActions = KeyboardActions(onDone = {
+                focusManager.clearFocus()
+            }),
         )
         if (state.playerNameError != null) {
             Text(
@@ -92,13 +85,14 @@ fun InputWithError(viewModel: PlayerFormViewModel, focusManager: FocusManager) {
 fun AddPlayerButton(viewModel: PlayerFormViewModel) {
     val state = viewModel.state.value
     Button(
-        modifier = Modifier
-            .height(60.dp),
+        modifier = Modifier.height(60.dp),
+        enabled = state.playerName.isNotEmpty() && state.playerNameError.isNullOrEmpty(),
         onClick = {
             viewModel.onEvent(
                 PlayerFormEvent.Submit(player = Player(state.playerName))
             )
-        }) {
+        }
+    ) {
         Text("Add")
     }
 }

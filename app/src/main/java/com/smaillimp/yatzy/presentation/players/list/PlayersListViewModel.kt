@@ -8,6 +8,7 @@ import com.smaillimp.yatzy.feature.players.usecase.PlayerUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -29,9 +30,9 @@ class PlayersListViewModel @Inject constructor(
     private fun getUsers() {
         getUsersJob?.cancel()
         getUsersJob = viewModelScope.launch(defaultDispatcher) {
-            playerUseCases.getPlayers().onEach { users ->
-                _state.value = state.value.copy(players = users)
-            }
+            playerUseCases.getPlayers().onEach { players ->
+                _state.value = state.value.copy(players = players)
+            }.collect()
         }
     }
 }

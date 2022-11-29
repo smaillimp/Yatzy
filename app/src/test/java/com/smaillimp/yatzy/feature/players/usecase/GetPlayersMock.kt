@@ -6,9 +6,11 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class GetPlayersMock : GetPlayersInterface {
-    public var called = false
+    var called = false
+    var players = listOf(Player(name = "Smaillim"), Player("Andy"))
+
     override fun invoke(): Flow<List<Player>> {
         called = true
-        return flow { listOf(Player(name = "Smaillim")) }
+        return flow { emit(players) }
     }
 }

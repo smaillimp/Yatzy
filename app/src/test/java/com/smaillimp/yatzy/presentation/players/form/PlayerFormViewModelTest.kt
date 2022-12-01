@@ -1,6 +1,7 @@
 package com.smaillimp.yatzy.presentation.players.form
 
 import com.smaillimp.yatzy.feature.players.domain.usecase.AddPlayerInterface
+import com.smaillimp.yatzy.feature.players.domain.usecase.DeletePlayerInterface
 import com.smaillimp.yatzy.feature.players.domain.usecase.GetPlayersInterface
 import com.smaillimp.yatzy.feature.players.model.Player
 import com.smaillimp.yatzy.feature.players.usecase.PlayerUseCases
@@ -28,6 +29,7 @@ internal class PlayerFormViewModelTest {
             PlayerUseCases(
                 getPlayers = mock<GetPlayersInterface> {},
                 addPlayer = addPlayerMock,
+                deletePlayer = mock<DeletePlayerInterface> {},
                 validatePlayerName = ValidatePlayerName()
             ),
             defaultDispatcher = testDispatcher

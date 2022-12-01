@@ -6,6 +6,7 @@ import com.smaillimp.yatzy.feature.players.data.data_source.PlayerDatabase
 import com.smaillimp.yatzy.feature.players.data.repository.PlayerRepository
 import com.smaillimp.yatzy.feature.players.domain.repository.PlayerRepositoryInterface
 import com.smaillimp.yatzy.feature.players.usecase.AddPlayer
+import com.smaillimp.yatzy.feature.players.usecase.DeletePlayer
 import com.smaillimp.yatzy.feature.players.usecase.GetPlayers
 import com.smaillimp.yatzy.feature.players.usecase.PlayerUseCases
 import com.smaillimp.yatzy.feature.players.usecase.ValidatePlayerName
@@ -42,6 +43,7 @@ object AppModule {
         return PlayerUseCases(
             getPlayers = GetPlayers(repository),
             addPlayer = AddPlayer(repository),
+            deletePlayer = DeletePlayer(repository),
             validatePlayerName = ValidatePlayerName()
         )
     }

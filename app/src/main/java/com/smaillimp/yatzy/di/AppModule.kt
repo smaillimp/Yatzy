@@ -49,6 +49,6 @@ object AppModule {
     @Provides
     @Singleton
     fun providesDefaultDispatcher(): CoroutineDispatcher {
-        return Dispatchers.Default
+        return Dispatchers.Main
     }
 }

@@ -22,3 +22,20 @@ git push origin <BRANCH> -f
 ```shell
 git commit -a --amend 
 ```
+
+## run unit tests
+```shell
+./gradlew testDebugUnitTest
+# or
+./gradlew tDUT
+```
+
+## check kotlin code formatting
+```shell
+./gradlew ktlintcheck
+```
+
+## format kotlin code
+```shell
+./gradlew ktlintformat
+```

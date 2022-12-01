@@ -4,6 +4,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.smaillimp.yatzy.feature.players.model.Player
 import com.smaillimp.yatzy.feature.players.usecase.PlayerUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -25,6 +26,18 @@ class PlayersListViewModel @Inject constructor(
 
     init {
         getUsers()
+    }
+
+    fun onEvent(event: PlayersListEvent) {
+        when (event) {
+            is PlayersListEvent.DeletePlayerName -> deletePlayer(event.player)
+        }
+    }
+
+    private fun deletePlayer(player: Player) {
+        viewModelScope.launch(defaultDispatcher) {
+            playerUseCases.deletePlayer(player)
+        }
     }
 
     private fun getUsers() {

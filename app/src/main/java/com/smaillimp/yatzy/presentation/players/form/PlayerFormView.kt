@@ -62,7 +62,7 @@ fun InputWithError(viewModel: PlayerFormViewModel, focusManager: FocusManager) {
             modifier = Modifier
                 .fillMaxWidth(0.77f)
                 .height(60.dp),
-            placeholder = {
+            label = {
                 Text(text = "Player Name")
             },
             keyboardOptions = KeyboardOptions(

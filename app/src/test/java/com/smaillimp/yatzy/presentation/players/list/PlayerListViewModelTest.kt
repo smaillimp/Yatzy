@@ -59,4 +59,9 @@ internal class PlayerListViewModelTest {
         playersListViewModel.onEvent(PlayersListEvent.DeletePlayerName(Player(name = "Andy")))
         verify(deletePlayerMock, times(1)).invoke(any<Player>())
     }
+
+    @Test
+    fun `intentionally failing test`() {
+        true shouldBe false
+    }
 }

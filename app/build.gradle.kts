@@ -16,7 +16,7 @@ android {
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.smaillimp.yatzy.AndroidTestRunner"
     }
 
     buildTypes {
@@ -62,7 +62,14 @@ dependencies {
     testImplementation("io.kotest:kotest-assertions-core:${rootProject.extra["kotestAssertionsCoreVersion"]}")
     testImplementation("org.mockito.kotlin:mockito-kotlin:${rootProject.extra["mockitoKotlinVersion"]}")
 
+    androidTestImplementation("junit:junit:${rootProject.extra["junitVersion"]}")
+    androidTestImplementation("androidx.test.ext:junit:${rootProject.extra["junitTestExtVersion"]}")
+    androidTestImplementation("androidx.test:runner:${rootProject.extra["testRunnerVersion"]}")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:${rootProject.extra["composeVersion"]}")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:${rootProject.extra["daggerHiltVersion"]}")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:${rootProject.extra["daggerHiltVersion"]}")
+    androidTestImplementation("io.kotest:kotest-assertions-core:${rootProject.extra["kotestAssertionsCoreVersion"]}")
+
     debugImplementation("androidx.compose.ui:ui-tooling:${rootProject.extra["composeVersion"]}")
     debugImplementation("androidx.compose.ui:ui-test-manifest:${rootProject.extra["composeVersion"]}")
 }

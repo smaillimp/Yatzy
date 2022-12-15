@@ -12,6 +12,7 @@ val hiltLifecycleViewmodelVersion by extra("1.0.0-alpha03")
 val junitJupiterVersion by extra("5.9.1")
 val kotestAssertionsCoreVersion by extra("5.5.4")
 val mockitoKotlinVersion by extra("4.1.0")
+val navigationComposeVersion by extra("2.5.3")
 
 buildscript {
     dependencies {

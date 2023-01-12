@@ -46,6 +46,7 @@ dependencies {
     implementation("androidx.compose.ui:ui:${rootProject.extra["composeVersion"]}")
     implementation("androidx.compose.ui:ui-tooling-preview:${rootProject.extra["composeVersion"]}")
     implementation("androidx.compose.material:material:${rootProject.extra["composeVersion"]}")
+    implementation("androidx.navigation:navigation-compose:${rootProject.extra["navigationComposeVersion"]}")
 
     implementation("com.google.dagger:hilt-android:${rootProject.extra["daggerHiltVersion"]}")
     kapt("com.google.dagger:hilt-android-compiler:${rootProject.extra["daggerHiltVersion"]}")

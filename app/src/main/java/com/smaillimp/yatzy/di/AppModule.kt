@@ -2,6 +2,7 @@ package com.smaillimp.yatzy.di
 
 import android.app.Application
 import androidx.room.Room
+import com.smaillimp.yatzy.feature.game.usecase.RollDice
 import com.smaillimp.yatzy.feature.players.data.data_source.PlayerDatabase
 import com.smaillimp.yatzy.feature.players.data.repository.PlayerRepository
 import com.smaillimp.yatzy.feature.players.domain.repository.PlayerRepositoryInterface
@@ -46,6 +47,12 @@ object AppModule {
             deletePlayer = DeletePlayer(repository),
             validatePlayerName = ValidatePlayerName()
         )
+    }
+
+    @Provides
+    @Singleton
+    fun provideRollDiceUseCase(): RollDice {
+        return RollDice()
     }
 
     @Provides
